@@ -7,13 +7,7 @@ import java.util.Date;
 
 public class Agenda {
 
-    private String tipo;
-    private Persona persona;
-    private ArrayList<PersistenciaTarea> dt;
-    private ArrayList<Participante> pcontacto;
-    Date fecha;
+    private String nombre;
+    private ArrayList<Calendario> listaCalendario;
 
-    public void prueba (){
-
-    }
 }
