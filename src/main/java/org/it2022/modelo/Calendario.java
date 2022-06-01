@@ -1,6 +1,26 @@
 package org.it2022.modelo;
 
-public class Calendario extends Agenda{
+import java.util.ArrayList;
+
+public class Calendario extends Agenda {
+
+    private String nombreCalendario;
+
+    public Calendario(String nombreCalendario) {
+        this.nombreCalendario = nombreCalendario;
+    }
+    public Calendario(String nombre, ArrayList<Calendario> listaCalendario, String nombreCalendario) {
+        super(nombre, listaCalendario);
+        this.nombreCalendario = nombreCalendario;
+    }
+
+    public String getNombreCalendario() {
+        return nombreCalendario;
+    }
+
+    public void setNombreCalendario(String nombreCalendario) {
+        this.nombreCalendario = nombreCalendario;
+    }
 
 
 }
