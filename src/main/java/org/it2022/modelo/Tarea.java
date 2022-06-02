@@ -3,7 +3,6 @@ package org.it2022.modelo;
 import org.it2022.persistencia.PersistenciaTarea;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Tarea {
 
@@ -15,24 +14,22 @@ public class Tarea {
     private Agenda agenda;
     private Persona persona;
     private ArrayList<PersistenciaTarea> listaPersistenciaTarea;
-    private ArrayList<Participante> litaPerContacto;
+    private ArrayList<Participante> listaParticipantes;
 
-
-    public Tarea(Agenda agenda, Persona persona, ArrayList<PersistenciaTarea> listaPersistenciaTarea, ArrayList<Participante> litaPerContacto, String fecha) {
-        this.agenda = agenda;
-        this.persona = persona;
-        this.listaPersistenciaTarea = listaPersistenciaTarea;
-        this.litaPerContacto = litaPerContacto;
-        this.fecha = fecha;
+    public Tarea() {
+        PersistenciaTarea persiTarea = new PersistenciaTarea();
+        this.listaPersistenciaTarea = new ArrayList<PersistenciaTarea>();
+        this.listaPersistenciaTarea.add(persiTarea);
     }
 
-
-    public Tarea(int id, String detalle, String fecha, String hora, String participante) {
+    public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Persona persona, ArrayList<Participante> listaParticipantes) {
         this.id = id;
         this.detalle = detalle;
         this.fecha = fecha;
         this.hora = hora;
-        this.participante = participante;
+        this.agenda = agenda;
+        this.persona = persona;
+        this.listaParticipantes = listaParticipantes;
     }
 
     public Agenda getAgenda() {
@@ -59,12 +56,12 @@ public class Tarea {
         this.listaPersistenciaTarea = listaPersistenciaTarea;
     }
 
-    public ArrayList<Participante> getLitaPerContacto() {
-        return litaPerContacto;
+    public ArrayList<Participante> getListaParticipantes() {
+        return listaParticipantes;
     }
 
-    public void setLitaPerContacto(ArrayList<Participante> litaPerContacto) {
-        this.litaPerContacto = litaPerContacto;
+    public void setListaParticipantes(ArrayList<Participante> listaParticipantes) {
+        this.listaParticipantes = listaParticipantes;
     }
 
     public String getFecha() {
@@ -73,6 +70,21 @@ public class Tarea {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return "Tarea{" +
+                "id=" + id +
+                ", detalle='" + detalle + '\'' +
+                ", fecha='" + fecha + '\'' +
+                ", hora='" + hora + '\'' +
+                ", participante='" + participante + '\'' +
+                ", agenda=" + agenda +
+                ", persona=" + persona +
+                ", listaPersistenciaTarea=" + listaPersistenciaTarea +
+                ", litaPerContacto=" + listaParticipantes +
+                '}';
     }
 }
 

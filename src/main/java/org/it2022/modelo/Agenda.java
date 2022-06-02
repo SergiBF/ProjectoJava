@@ -33,4 +33,12 @@ public class Agenda {
     public void setListaCalendario(ArrayList<Calendario> listaCalendario) {
         this.listaCalendario = listaCalendario;
     }
+
+    @Override
+    public String toString() {
+        return "Agenda{" +
+                "nombre='" + nombre + '\'' +
+                ", listaCalendario=" + listaCalendario +
+                '}';
+    }
 }

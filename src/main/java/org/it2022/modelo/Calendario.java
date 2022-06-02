@@ -22,5 +22,10 @@ public class Calendario extends Agenda {
         this.nombreCalendario = nombreCalendario;
     }
 
-
+    @Override
+    public String toString() {
+        return "Calendario{" +
+                "nombreCalendario='" + nombreCalendario + '\'' +
+                '}';
+    }
 }

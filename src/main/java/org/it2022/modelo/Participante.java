@@ -9,4 +9,10 @@ public class Participante extends Persona{
         this.id=id;
     }
 
+    @Override
+    public String toString() {
+        return "Participante{" +
+                "id=" + id +
+                '}';
+    }
 }
