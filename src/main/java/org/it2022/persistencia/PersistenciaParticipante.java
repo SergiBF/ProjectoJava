@@ -8,12 +8,12 @@ import java.util.List;
 public class PersistenciaParticipante {
 
 
-          //Patrón Singleton
+
         private static PersistenciaParticipante persiPart = new PersistenciaParticipante();
 
         private ArrayList<Participante> listaParticipantes = new Arraylist<Participante()>;
 
-        //Patrón Singleton creando el constructor de forma privada
+
         private PersistenciaParticipante() {
 
             Persona persona = new Persona("Juan", "Rodríguez", "calle 1", "email@email.com");
