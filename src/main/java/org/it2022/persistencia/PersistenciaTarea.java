@@ -56,7 +56,20 @@ public class PersistenciaTarea {
                 return t;
             }
         }return null;
+    }
 
+    /**
+     * Método para obtener la tarea mediante su ID
+     * @param IDparticipante recibe un integer
+     * @return devuelve un objeto tarea
+     */
+    public Tarea buscadorDeTareas(int IDparticipante){
+        for (Tarea t : tarea) {
+            if (t.getId() == IDparticipante) {
+                System.out.println(t);
+                return t;
+            }
+        }return null;
     }
 
 }
