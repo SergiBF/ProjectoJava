@@ -16,12 +16,6 @@ public class Tarea {
     private ArrayList<PersistenciaTarea> listaPersistenciaTarea;
     private ArrayList<Participante> listaParticipantes;
 
-    public Tarea() {
-        PersistenciaTarea persiTarea = new PersistenciaTarea();
-        this.listaPersistenciaTarea = new ArrayList<PersistenciaTarea>();
-        this.listaPersistenciaTarea.add(persiTarea);
-    }
-
     public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Persona persona, ArrayList<Participante> listaParticipantes) {
         this.id = id;
         this.detalle = detalle;
@@ -30,6 +24,14 @@ public class Tarea {
         this.agenda = agenda;
         this.persona = persona;
         this.listaParticipantes = listaParticipantes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Agenda getAgenda() {

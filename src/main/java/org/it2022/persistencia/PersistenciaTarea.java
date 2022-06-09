@@ -8,9 +8,13 @@ import java.util.List;
 
 public class PersistenciaTarea {
 
+    //Patrón Singleton
+    private static PersistenciaTarea persi = new PersistenciaTarea();
+
     private List<Tarea> tarea = new ArrayList();
 
-    public PersistenciaTarea() {
+    //Patrón Singleton creando el constructor de forma privada
+    private PersistenciaTarea() {
         Calendario ca = new Calendario("Trabajo");
         ArrayList<Calendario> listaCalendario = new ArrayList();
         listaCalendario.add(ca);
@@ -23,11 +27,24 @@ public class PersistenciaTarea {
         this.tarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, persona, listaParticipantes));
     }
 
+    //Patrón Singleton
+    public static PersistenciaTarea getInstance(){
+        return persi;
+    }
+
     public List<Tarea> getTarea() {
         return tarea;
     }
 
     public void setTarea(List<Tarea> tarea) {
         tarea = tarea;
+    }
+
+    public static PersistenciaTarea getPersi() {
+        return persi;
+    }
+
+    public static void setPersi(PersistenciaTarea persi) {
+        PersistenciaTarea.persi = persi;
     }
 }
