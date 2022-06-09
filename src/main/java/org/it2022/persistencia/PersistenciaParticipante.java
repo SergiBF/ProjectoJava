@@ -6,12 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersistenciaParticipante {
-
-
           //Patrón Singleton
-        private static PersistenciaParticipante persiPart = new PersistenciaParticipante();
-
-        private ArrayList<Participante> listaParticipantes = new Arraylist<Participante()>;
+        private ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
 
         //Patrón Singleton creando el constructor de forma privada
         private PersistenciaParticipante() {
@@ -22,14 +18,6 @@ public class PersistenciaParticipante {
 
 
         }
-
-    public static PersistenciaParticipante getPersiPart() {
-        return persiPart;
-    }
-
-    public static void setPersiPart(PersistenciaParticipante persiPart) {
-        PersistenciaParticipante.persiPart = persiPart;
-    }
 
     public ArrayList<Participante> getListaParticipantes() {
         return listaParticipantes;

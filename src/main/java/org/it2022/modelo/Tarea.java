@@ -12,17 +12,16 @@ public class Tarea {
     private String hora;
     private String participante;
     private Agenda agenda;
-    private Persona persona;
-    private ArrayList<PersistenciaTarea> listaPersistenciaTarea;
+    private Usuario usuario;
     private ArrayList<Participante> listaParticipantes;
 
-    public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Persona persona, ArrayList<Participante> listaParticipantes) {
+    public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Usuario usuario, ArrayList<Participante> listaParticipantes) {
         this.id = id;
         this.detalle = detalle;
         this.fecha = fecha;
         this.hora = hora;
         this.agenda = agenda;
-        this.persona = persona;
+        this.usuario = usuario;
         this.listaParticipantes = listaParticipantes;
     }
 
@@ -46,21 +45,15 @@ public class Tarea {
         this.agenda = agenda;
     }
 
-    public Persona getPersona() {
-        return persona;
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public ArrayList<PersistenciaTarea> getListaPersistenciaTarea() {
-        return listaPersistenciaTarea;
-    }
-
-    public void setListaPersistenciaTarea(ArrayList<PersistenciaTarea> listaPersistenciaTarea) {
-        this.listaPersistenciaTarea = listaPersistenciaTarea;
-    }
 
     public ArrayList<Participante> getListaParticipantes() {
         return listaParticipantes;
@@ -87,8 +80,7 @@ public class Tarea {
                 ", hora='" + hora + '\'' +
                 ", participante='" + participante + '\'' +
                 ", agenda=" + agenda +
-                ", persona=" + persona +
-                ", listaPersistenciaTarea=" + listaPersistenciaTarea +
+                ", usuario=" + usuario +
                 ", litaPerContacto=" + listaParticipantes +
                 '}';
     }
