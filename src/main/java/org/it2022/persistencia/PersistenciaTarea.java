@@ -59,4 +59,19 @@ public class PersistenciaTarea {
 
     }
 
+    /**
+     * Método para el retorno de la tarea mediante solo su ID
+     * @param IDparticipante recibe un id de tarea
+     * @return devuelve la tarea
+     */
+    public Tarea buscadorDeTareas(int IDparticipante){
+        for (Tarea t : tarea) {
+            if (t.getId() == IDparticipante) {
+                System.out.println(t);
+                return t;
+            }
+        }return null;
+
+    }
+
 }
