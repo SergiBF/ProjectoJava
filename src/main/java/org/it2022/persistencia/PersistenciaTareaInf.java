@@ -11,4 +11,6 @@ public interface PersistenciaTareaInf {
 
     public Tarea buscadorDeTareas(String fecha, int IDparticipante);
 
+    public List<Tarea> buscarTareasPorUsuario(int idUser, String fecha);
+
 }

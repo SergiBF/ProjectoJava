@@ -72,7 +72,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
      * Método para obtener la tarea mediante su ID
      *
      * @param idTarea recibe un integer
-     * @return devuelve un objeto tarea
+     * @return devuelve un objeto tarea si la encuentra, si no devuelve un nulo
      */
 
     public Tarea buscadorDeTareas(int idTarea) {

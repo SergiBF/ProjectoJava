@@ -18,7 +18,7 @@ public class GestorTareas implements GestorTareasInf {
     }
 
     public List<Tarea> buscaTareasPorUsuarioYFecha(String fecha, int idUsuario){
-        return repoTareas.buscadorDeTareas(fecha, idUsuario);
+        return repoTareas.buscarTareasPorUsuario(idUsuario,fecha);
     }
 
 
