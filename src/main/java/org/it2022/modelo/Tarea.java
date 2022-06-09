@@ -26,6 +26,10 @@ public class Tarea {
         this.listaParticipantes = listaParticipantes;
     }
 
+    public String getParticipante() {
+        return participante;
+    }
+
     public int getId() {
         return id;
     }

@@ -47,4 +47,16 @@ public class PersistenciaTarea {
     public static void setPersi(PersistenciaTarea persi) {
         PersistenciaTarea.persi = persi;
     }
+
+
+    public Tarea buscadorDeTareas(String fecha, int IDparticipante){
+        for (Tarea t : tarea) {
+            if (t.getFecha().equals(fecha) && t.getId() == IDparticipante) {
+                System.out.println(t);
+                return t;
+            }
+        }return null;
+
+    }
+
 }
