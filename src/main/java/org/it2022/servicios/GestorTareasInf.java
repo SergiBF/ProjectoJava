@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GestorTareasInf {
 
-    public  final List<Tarea> almacenDeTareas = new ArrayList<>();
+    public List<Tarea> almacenDeTareas = new ArrayList<>();
 
     public void addTarea(Tarea tarea);
 

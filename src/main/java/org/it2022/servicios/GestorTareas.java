@@ -11,10 +11,10 @@ import java.util.List;
 public class GestorTareas implements GestorTareasInf {
 
     @Inject
-    private PersistenciaTareaInf repoTareas;
+    private  PersistenciaTareaInf repoTareas;
 
     public void addTarea(Tarea tarea) { //Permite añadir tareas a la lista del GestorTareas
-        // this.almacenDeTareas.add(tarea);
+        this.repoTareas.addTarea(tarea);
     }
 
     public List<Tarea> buscaTareasPorUsuarioYFecha(String fecha, int idUsuario){
@@ -25,6 +25,14 @@ public class GestorTareas implements GestorTareasInf {
     @Override
     public String toString() {
         return "GestorTareas{}";
+    }
+
+    public PersistenciaTareaInf getRepoTareas() {
+        return repoTareas;
+    }
+
+    public void setRepoTareas(PersistenciaTareaInf repoTareas) {
+        this.repoTareas = repoTareas;
     }
 }
 

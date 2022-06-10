@@ -13,7 +13,7 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(ConfigProyecto.class);
         GestorTareasInf nuevasTareas = context.getBean(GestorTareasInf.class);
-        System.out.println(nuevasTareas.addTarea(context.getBean(PersistenciaTareaInf.class).buscadorDeTareas("20/06/2022", 00)));
+        System.out.println(nuevasTareas.buscaTareasPorUsuarioYFecha("20/06/2022", 01));
 
 
         //Patrón Singleton

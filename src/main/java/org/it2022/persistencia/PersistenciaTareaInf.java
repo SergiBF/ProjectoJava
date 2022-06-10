@@ -13,4 +13,6 @@ public interface PersistenciaTareaInf {
 
     public List<Tarea> buscarTareasPorUsuario(int idUser, String fecha);
 
+    public void addTarea(Tarea addTarea);
+
 }

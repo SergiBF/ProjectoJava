@@ -4,19 +4,18 @@ import org.it2022.modelo.*;
 
 import javax.inject.Named;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Named
 public class PersistenciaTarea implements PersistenciaTareaInf {
 
     //Patrón Singleton
-    private static PersistenciaTarea persi = new PersistenciaTarea();
+   // private static PersistenciaTarea persi = new PersistenciaTarea();
 
-    private ArrayList<Tarea> tarea = new ArrayList();
+    private ArrayList<Tarea> repoTarea = new ArrayList();
 
     //Patrón Singleton creando el constructor de forma privada
-    private PersistenciaTarea() {
+    public PersistenciaTarea() {
         Calendario ca = new Calendario("Trabajo");
         ArrayList<Calendario> listaCalendario = new ArrayList();
         listaCalendario.add(ca);
@@ -25,30 +24,21 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
         listaParticipantes.add(new Participante(00, "Pedro", "Martinez", "calle Font", "participante@email.com"));
 
-        this.tarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes));
-        this.tarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes));
+        this.repoTarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes));
+        this.repoTarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes));
     }
 
     //Patrón Singleton
-    public static PersistenciaTarea getInstance() {
-        return persi;
+
+    public List<Tarea> getRepoTarea() {
+        return repoTarea;
     }
 
-    public List<Tarea> getTarea() {
-        return tarea;
+    public void setRepoTarea(List<Tarea> repoTarea) {
+        repoTarea = repoTarea;
     }
 
-    public void setTarea(List<Tarea> tarea) {
-        tarea = tarea;
-    }
 
-    public static PersistenciaTarea getPersi() {
-        return persi;
-    }
-
-    public static void setPersi(PersistenciaTarea persi) {
-        PersistenciaTarea.persi = persi;
-    }
 
     /**
      * Metodo para ontener una tarea a partir de la fecha y el ID del participante
@@ -59,7 +49,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
      */
 
     public Tarea buscadorDeTareas(String fecha, int idTarea) {
-        for (Tarea t : tarea) {
+        for (Tarea t : repoTarea) {
             if (t.getFecha().equals(fecha) && t.getId() == idTarea) {
                 System.out.println(t);
                 return t;
@@ -76,7 +66,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
      */
 
     public Tarea buscadorDeTareas(int idTarea) {
-        for (Tarea t : tarea) {
+        for (Tarea t : repoTarea) {
             if (t.getId() == idTarea) {
                 System.out.println(t);
                 return t;
@@ -94,7 +84,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
 
     public List<Tarea> buscarTareasPorUsuario(int idUser, String fecha) {
         List<Tarea> listaEncontrados = new ArrayList();
-        for (Tarea t : tarea) {
+        for (Tarea t : repoTarea) {
             if (t.getUsuario().getIDusuario() == idUser) {
                 listaEncontrados.add(t);
             }
@@ -105,4 +95,19 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
             return listaEncontrados;
         }
     }
+
+    /**
+     * Esta funciona le pasan un objeto Tarea para añadirlo al repositorio repoTarea, tambien si esta nueva tarea tiene el mismo ID que otra
+     * lo cambia si es el caso.
+     * @param tarea Esto és el objto Tarea que se añade a la lista
+     */
+    public void addTarea(Tarea tarea){
+        for(Tarea t : this.repoTarea){
+            if(t.getId()==tarea.getId()){
+                tarea.setId(repoTarea.size()+1);
+            }
+        }
+        this.repoTarea.add(tarea);
+    }
+
 }
