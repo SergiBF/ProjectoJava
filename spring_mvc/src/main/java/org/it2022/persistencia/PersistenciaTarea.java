@@ -24,8 +24,8 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
         listaParticipantes.add(new Participante(00, "Pedro", "Martinez", "calle Font", "participante@email.com"));
 
-        this.repoTarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes));
-        this.repoTarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes));
+        this.repoTarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
+        this.repoTarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
     }
 
     //Patrón Singleton
@@ -109,5 +109,16 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         }
         this.repoTarea.add(tarea);
     }
+
+    public void modificarTarea(String fecha, String descrip){
+        for(Tarea t : this.repoTarea){
+                if(t.getFecha().equals(fecha)){
+                    t.setDetalle(descrip);
+            }
+        }
+    }
+
+
+
 
 }
