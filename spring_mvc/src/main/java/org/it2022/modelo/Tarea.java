@@ -8,6 +8,8 @@ public class Tarea {
 
     private int id;
     private String detalle;
+
+    private String titulo;
     private String fecha;
     private String hora;
     private String participante;
@@ -15,7 +17,7 @@ public class Tarea {
     private Usuario usuario;
     private ArrayList<Participante> listaParticipantes;
 
-    public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Usuario usuario, ArrayList<Participante> listaParticipantes) {
+    public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Usuario usuario, ArrayList<Participante> listaParticipantes, String titulo) {
         this.id = id;
         this.detalle = detalle;
         this.fecha = fecha;
@@ -23,6 +25,35 @@ public class Tarea {
         this.agenda = agenda;
         this.usuario = usuario;
         this.listaParticipantes = listaParticipantes;
+        this.titulo = titulo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public void setParticipante(String participante) {
+        this.participante = participante;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
     }
 
     public String getParticipante() {
@@ -70,18 +101,18 @@ public class Tarea {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
     @Override
     public String toString() {
         return "Tarea{" +
                 "id=" + id +
                 ", detalle='" + detalle + '\'' +
+                ", titulo='" + titulo + '\'' +
                 ", fecha='" + fecha + '\'' +
                 ", hora='" + hora + '\'' +
                 ", participante='" + participante + '\'' +
                 ", agenda=" + agenda +
                 ", usuario=" + usuario +
-                ", litaPerContacto=" + listaParticipantes +
+                ", listaParticipantes=" + listaParticipantes +
                 '}';
     }
 }
