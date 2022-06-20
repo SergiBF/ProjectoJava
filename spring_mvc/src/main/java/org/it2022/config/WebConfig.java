@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.netmind.web")
+@ComponentScan("org.it2022.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	// Configure a view resolver
