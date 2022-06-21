@@ -1,3 +1,4 @@
+
 package org.it2022.persistencia;
 
 import org.it2022.modelo.*;
@@ -27,11 +28,11 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         listaParticipantes.add(new Participante(00, "Pedro", "Martinez", "calle Font", "participante@email.com"));
         listaParticipantes2.add(new Participante(00, "Pepe", "Pozo", "calle Roc Boronat", "participante123@email.com"));
         listaParticipantes2.add(new Participante(00, "Luis", "Perez", "Calle Nueva del río", "participante444@email.com"));
-
         this.repoTarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
         this.repoTarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
         this.repoTarea.add(new Tarea(04, "hacer la compra del mes", "16/05/2022", "19:00", agenda, usuario2, listaParticipantes, "Ir a comprar"));
         this.repoTarea.add(new Tarea(05, "Cine", "16/10/2022", "22:00", agenda, usuario, listaParticipantes2, "ir al cine"));
+
     }
 
     //Patrón Singleton
@@ -56,7 +57,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
 
     public Tarea buscadorDeTareas(String fecha, int idTarea) {
         for (Tarea t : repoTarea) {
-            if (t.getFecha().equals(fecha) && t.getId() == idTarea) {
+            if (t.getFecha().equals(fecha)) {
                 System.out.println(t);
                 return t;
             }
@@ -91,10 +92,11 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
     public List<Tarea> buscarTareasPorUsuario(int idUser, String fecha) {
         List<Tarea> listaEncontrados = new ArrayList();
         for (Tarea t : repoTarea) {
-            if (t.getUsuario().getIDusuario() == idUser) {
+            if (t.getUsuario().getIDusuario() == idUser && t.getFecha().equals(fecha)) {
                 listaEncontrados.add(t);
             }
         }
+        System.out.println("tareas encontradas: "+ listaEncontrados);
         if (listaEncontrados.isEmpty()) {
             return null;
         } else {
@@ -124,6 +126,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         }
     }
 
+
     /**
      * Método que te devuevle las tareas de un mes dado el usuario y el mes
      *
@@ -144,6 +147,5 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
             return listaEncontrados;
         }
     }
-
 
 }
