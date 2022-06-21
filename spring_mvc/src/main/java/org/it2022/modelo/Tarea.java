@@ -1,3 +1,4 @@
+
 package org.it2022.modelo;
 
 import org.it2022.persistencia.PersistenciaTarea;
