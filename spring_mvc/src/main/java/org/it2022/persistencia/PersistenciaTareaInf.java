@@ -15,4 +15,5 @@ public interface PersistenciaTareaInf {
 
     public void addTarea(Tarea addTarea);
 
+    public List<Tarea> buscarTareasPorMes(int idUser, String fecha);
 }
