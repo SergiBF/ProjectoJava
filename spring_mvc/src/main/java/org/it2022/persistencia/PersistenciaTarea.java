@@ -10,7 +10,7 @@ import java.util.List;
 public class PersistenciaTarea implements PersistenciaTareaInf {
 
     //Patrón Singleton
-   // private static PersistenciaTarea persi = new PersistenciaTarea();
+    // private static PersistenciaTarea persi = new PersistenciaTarea();
 
     private ArrayList<Tarea> repoTarea = new ArrayList();
 
@@ -24,8 +24,8 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
         listaParticipantes.add(new Participante(00, "Pedro", "Martinez", "calle Font", "participante@email.com"));
 
-        this.repoTarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes));
-        this.repoTarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes));
+        this.repoTarea.add(new Tarea(00, "Cita con el dentista en C/ Mallorca, 27", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
+        this.repoTarea.add(new Tarea(01, "Llevar el coche al taller 'Paco'", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
     }
 
     //Patrón Singleton
@@ -50,7 +50,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
 
     public Tarea buscadorDeTareas(String fecha, int idTarea) {
         for (Tarea t : repoTarea) {
-            if (t.getFecha().equals(fecha) && t.getId() == idTarea) {
+            if (t.getFecha().equals(fecha)) {
                 System.out.println(t);
                 return t;
             }
@@ -85,10 +85,11 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
     public List<Tarea> buscarTareasPorUsuario(int idUser, String fecha) {
         List<Tarea> listaEncontrados = new ArrayList();
         for (Tarea t : repoTarea) {
-            if (t.getUsuario().getIDusuario() == idUser) {
+            if (t.getUsuario().getIDusuario() == idUser && t.getFecha().equals(fecha)) {
                 listaEncontrados.add(t);
             }
         }
+        System.out.println("tareas encontradas: "+ listaEncontrados);
         if (listaEncontrados.isEmpty()) {
             return null;
         } else {
@@ -109,5 +110,16 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         }
         this.repoTarea.add(tarea);
     }
+
+    public void modificarTarea(String fecha, String descrip){
+        for(Tarea t : this.repoTarea){
+            if(t.getFecha().equals(fecha)){
+                t.setDetalle(descrip);
+            }
+        }
+    }
+
+
+
 
 }
