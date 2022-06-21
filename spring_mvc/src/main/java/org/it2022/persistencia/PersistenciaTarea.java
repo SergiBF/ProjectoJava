@@ -22,11 +22,17 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         listaCalendario.add(ca);
         Agenda agenda = new Agenda("Personal", listaCalendario);
         Usuario usuario = new Usuario("Juan", "Rodríguez", "calle 1", "email@email.com", 01);
+        Usuario usuario2 = new Usuario("Sergi", "Boronat", "calle 2", "Sergi@email.com", 02);
         ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
+        ArrayList<Participante> listaParticipantes2 = new ArrayList<Participante>();
         listaParticipantes.add(new Participante(00, "Pedro", "Martinez", "calle Font", "participante@email.com"));
+        listaParticipantes2.add(new Participante(00, "Pepe", "Pozo", "calle Roc Boronat", "participante123@email.com"));
+        listaParticipantes2.add(new Participante(00, "Luis", "Perez", "Calle Nueva del río", "participante444@email.com"));
+        this.repoTarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
+        this.repoTarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
+        this.repoTarea.add(new Tarea(04, "hacer la compra del mes", "16/05/2022", "19:00", agenda, usuario2, listaParticipantes, "Ir a comprar"));
+        this.repoTarea.add(new Tarea(05, "Cine", "16/10/2022", "22:00", agenda, usuario, listaParticipantes2, "ir al cine"));
 
-        this.repoTarea.add(new Tarea(00, "Cita con el dentista en C/ Mallorca, 27", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
-        this.repoTarea.add(new Tarea(01, "Llevar el coche al taller 'Paco'", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
     }
 
     //Patrón Singleton
@@ -121,6 +127,25 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
     }
 
 
-
+    /**
+     * Método que te devuevle las tareas de un mes dado el usuario y el mes
+     *
+     * @param idUser recibe un integer como identificador de usuario
+     * @param fecha  recibe un String como fecha
+     * @return devuelve el listado de tareas por mes para el usuario
+     */
+    public List<Tarea> buscarTareasPorMes(int idUser, String fecha) {
+        List<Tarea> listaEncontrados = new ArrayList();
+        for (Tarea t : repoTarea) {
+            if (t.getFecha().substring(03, 05).equals(fecha.substring(03, 05)) && t.getUsuario().getIDusuario() == idUser) {
+                listaEncontrados.add(t);
+            }
+        }
+        if (listaEncontrados.isEmpty()) {
+            return null;
+        } else {
+            return listaEncontrados;
+        }
+    }
 
 }

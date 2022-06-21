@@ -34,6 +34,8 @@ public class GestorTareas implements GestorTareasInf {
     public void setRepoTareas(PersistenciaTareaInf repoTareas) {
         this.repoTareas = repoTareas;
     }
+
+    public List<Tarea> buscarTareasPorMes(int idUser, String fecha){return repoTareas.buscarTareasPorMes( idUser, fecha);}
 }
 
 

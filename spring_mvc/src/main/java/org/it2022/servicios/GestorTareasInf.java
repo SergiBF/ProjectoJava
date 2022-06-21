@@ -13,4 +13,6 @@ public interface GestorTareasInf {
 
     public List<Tarea> buscaTareasPorUsuarioYFecha(String fecha, int idUsuario);
 
+    public List<Tarea> buscarTareasPorMes(int idUser, String fecha);
+
 }

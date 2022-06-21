@@ -105,7 +105,7 @@ public class Tarea {
     @Override
     public String toString() {
         return "Tarea{" +
-                "id=" + id +
+                "  id=" + id +
                 ", detalle='" + detalle + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", fecha='" + fecha + '\'' +
