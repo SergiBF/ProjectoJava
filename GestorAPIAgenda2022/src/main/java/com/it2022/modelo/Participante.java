@@ -4,16 +4,17 @@ public class Participante extends Persona{
 
     private int id;
 
+    private String nombre;
+    private String apellidos;
 
-<<<<<<< HEAD
-    public Participante(int id, String nombre, String apellidos, String direccion, String email) {
-        super(nombre, apellidos, direccion, email);
-=======
+    private String email;
+
+
     public Participante(int id, String nombre, String apellidos, String email) {
         super(nombre, apellidos, email);
->>>>>>> origin/api
         this.id=id;
     }
+
 
     public int getId() {
         return id;
@@ -23,8 +24,7 @@ public class Participante extends Persona{
         this.id = id;
     }
 
-<<<<<<< HEAD
-=======
+
     public boolean isValid(){
         if(nombre!=null && nombre.length()>0
                 && apellidos!=null && apellidos.length()>0
@@ -32,7 +32,7 @@ public class Participante extends Persona{
         else return false;
     }
 
->>>>>>> origin/api
+
     @Override
     public String toString() {
         return "Participante{" +
