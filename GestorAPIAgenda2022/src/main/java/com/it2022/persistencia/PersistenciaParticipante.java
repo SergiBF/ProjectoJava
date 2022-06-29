@@ -41,8 +41,6 @@ public class PersistenciaParticipante {
         listaParticipantes.add(newParticipante);
         System.out.println("Hola desde Persistencia");
     }
-
-    public Boolean deleteParticipante(int id) {
         for (Participante unPart : listaParticipantes) {
             if (unPart.getId() == id) {
                 listaParticipantes.remove(unPart);
