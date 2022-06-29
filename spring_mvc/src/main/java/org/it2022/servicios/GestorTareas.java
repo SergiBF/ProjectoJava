@@ -22,6 +22,19 @@ public class GestorTareas implements GestorTareasInf {
     }
 
 
+
+    public void actualizarTarea(Tarea tarNuevosDatos){
+        repoTareas.actualizarTarea(tarNuevosDatos);
+    }
+
+    public Tarea obtenerTarea(int id){
+
+        return repoTareas.buscadorDeTareas(id);
+
+    }
+
+
+
     @Override
     public String toString() {
         return "GestorTareas{}";

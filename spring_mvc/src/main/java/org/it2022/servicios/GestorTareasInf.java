@@ -13,4 +13,9 @@ public interface GestorTareasInf {
 
     public List<Tarea> buscaTareasPorUsuarioYFecha(String fecha, int idUsuario);
 
+
+    public Tarea obtenerTarea(int id);
+
+    public void actualizarTarea(Tarea tarNuevosDatos);
+
 }

@@ -15,4 +15,7 @@ public interface PersistenciaTareaInf {
 
     public void addTarea(Tarea addTarea);
 
+    public void actualizarTarea(Tarea tarNuevosDatos);
+
+    public Tarea buscadorDeTareas(int idTarea);
 }
