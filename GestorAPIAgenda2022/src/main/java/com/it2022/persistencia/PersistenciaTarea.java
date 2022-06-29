@@ -21,12 +21,21 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         ArrayList<Calendario> listaCalendario = new ArrayList();
         listaCalendario.add(ca);
         Agenda agenda = new Agenda("Personal", listaCalendario);
+<<<<<<< HEAD
         Usuario usuario = new Usuario("Juan", "Rodríguez", "calle 1", "email@email.com", 01);
         ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
         listaParticipantes.add(new Participante(00, "Pedro", "Martinez", "calle Font", "participante@email.com"));
 
         this.repoTarea.add(new Tarea(00, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
         this.repoTarea.add(new Tarea(01, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
+=======
+        Usuario usuario = new Usuario("Juan", "Rodríguez","email@email.com", 1);
+        ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
+        listaParticipantes.add(new Participante(0, "Pedro", "Martinez",  "participante@email.com"));
+
+        this.repoTarea.add(new Tarea(0, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
+        this.repoTarea.add(new Tarea(1, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
+>>>>>>> origin/api
     }
 
     //Patrón Singleton
@@ -116,6 +125,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
     /**
      * @param tarNuevosDatos
      */
+<<<<<<< HEAD
     public Tarea actualizarTarea(Tarea tarNuevosDatos) {
         for(Tarea tr : repoTarea){
             if(tr.getId() == tarNuevosDatos.getId()){
@@ -146,6 +156,11 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         }
 
         return false;
+=======
+    public void actualizarTarea(Tarea tarNuevosDatos) {
+        Tarea tareaAModificar = buscadorDeTareas(tarNuevosDatos.getId());
+        if (tarNuevosDatos.getDetalle() != null) tareaAModificar.setDetalle(tarNuevosDatos.getDetalle());
+>>>>>>> origin/api
 
     }
 

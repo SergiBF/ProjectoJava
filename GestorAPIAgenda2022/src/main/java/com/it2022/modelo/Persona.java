@@ -2,12 +2,20 @@ package com.it2022.modelo;
 
 public class Persona {
 
+<<<<<<< HEAD
     private String nombre, apellidos, direccion, email;
 
     public Persona(String nombre, String apellidos, String direccion, String email) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;
+=======
+    protected String nombre, apellidos, email;
+
+    public Persona(String nombre, String apellidos, String email) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+>>>>>>> origin/api
         this.email = email;
     }
 
@@ -27,6 +35,7 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
+<<<<<<< HEAD
     public String getDireccion() {
         return direccion;
     }
@@ -35,6 +44,8 @@ public class Persona {
         this.direccion = direccion;
     }
 
+=======
+>>>>>>> origin/api
     public String getEmail() {
         return email;
     }
@@ -48,7 +59,10 @@ public class Persona {
         return "Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
+<<<<<<< HEAD
                 ", direccion='" + direccion + '\'' +
+=======
+>>>>>>> origin/api
                 ", email='" + email + '\'' +
                 '}';
     }
