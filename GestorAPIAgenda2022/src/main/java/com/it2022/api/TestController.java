@@ -1,12 +1,9 @@
 package com.it2022.api;
-
 import com.it2022.modelo.Tarea;
 import com.it2022.servicios.GestorTareasInf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.SQLOutput;
 import java.util.List;
 
 
