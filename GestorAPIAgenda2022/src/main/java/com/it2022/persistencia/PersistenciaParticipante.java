@@ -1,7 +1,6 @@
 package com.it2022.persistencia;
 
 import com.it2022.modelo.Participante;
-import com.it2022.modelo.Persona;
 
 import javax.inject.Named;
 import java.util.ArrayList;
@@ -22,6 +21,7 @@ public class PersistenciaParticipante {
 
     }
 
+
     public ArrayList<Participante> getListaParticipantes() {
         return listaParticipantes;
     }
@@ -29,6 +29,7 @@ public class PersistenciaParticipante {
     public void setListaParticipantes(ArrayList<Participante> listaParticipantes) {
         this.listaParticipantes = listaParticipantes;
     }
+
 
     public List<Participante> getAll() {
         return listaParticipantes;
@@ -44,9 +45,11 @@ public class PersistenciaParticipante {
         for (Participante unPart : listaParticipantes) {
             if (unPart.getId() == id) {
                 listaParticipantes.remove(unPart);
-                return true;}
-            }return false;
+                return true;
+            }
         }
+        return false;
+    }
 
     public Participante ediciónParticipanteAModificar(Participante participanteAModificar) {
         //recorremos el repositorio
@@ -57,7 +60,8 @@ public class PersistenciaParticipante {
                 listaParticipantes.add(participanteAModificar);
                 return participanteAModificar;
             }
-        }return null;
+        }
+        return null;
     }
 
     public Participante cargarParticipante(int id) {
@@ -67,5 +71,6 @@ public class PersistenciaParticipante {
         return null;
     }
 }
+
 
 

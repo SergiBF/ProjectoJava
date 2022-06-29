@@ -4,11 +4,17 @@ public class Participante extends Persona{
 
     private int id;
 
+    private String nombre;
+    private String apellidos;
+
+    private String email;
+
 
     public Participante(int id, String nombre, String apellidos, String email) {
         super(nombre, apellidos, email);
         this.id=id;
     }
+
 
     public int getId() {
         return id;
@@ -18,12 +24,14 @@ public class Participante extends Persona{
         this.id = id;
     }
 
+
     public boolean isValid(){
         if(nombre!=null && nombre.length()>0
                 && apellidos!=null && apellidos.length()>0
                 && email.indexOf("@")>0) return true;
         else return false;
     }
+
 
     @Override
     public String toString() {

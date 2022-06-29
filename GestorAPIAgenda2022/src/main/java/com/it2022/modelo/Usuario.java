@@ -3,8 +3,10 @@ package com.it2022.modelo;
 public class Usuario extends Persona{
     private int IDusuario;
 
+
     public Usuario(String nombre, String apellidos, String email, int id ) {
         super(nombre, apellidos, email);
+
         this.IDusuario=id;
 
     }

@@ -1,5 +1,4 @@
 package com.it2022.servicios;
-
 import com.it2022.modelo.Participante;
 import com.it2022.persistencia.PersistenciaParticipante;
 
@@ -54,6 +53,7 @@ public class GestorParticipantes {
             }
 
         }
+
 
 
 

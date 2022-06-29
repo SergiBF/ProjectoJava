@@ -8,4 +8,5 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan({"com.it2022.persistencia","com.it2022.servicios"})
 public class ConfigProyecto {
 
+
 }
