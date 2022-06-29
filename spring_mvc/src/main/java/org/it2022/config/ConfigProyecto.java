@@ -14,4 +14,5 @@ import java.util.ArrayList;
 @ComponentScan({"org.it2022.persistencia","org.it2022.servicios"})
 public class ConfigProyecto {
 
+
 }
