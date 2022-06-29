@@ -11,7 +11,7 @@ public class TareaController {
 
 
     @RestController
-    @RequestMapping("/test")
+    @RequestMapping("/tarea")
     public class TestController {
 
         @Autowired
