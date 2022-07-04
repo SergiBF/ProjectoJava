@@ -130,7 +130,7 @@ public class Tarea {
 
     public boolean isValid() {
         if(this.detalle!=null && this.detalle.length()>3 && this.fecha!=null && this.fecha.length()>8
-                && this.usuario!=null && this.hora!=null && this.fecha.length()>2
+                && this.usuario !=null && this.hora!=null && this.fecha.length()>2
                 && this.titulo!=null){
             return true;
         }
