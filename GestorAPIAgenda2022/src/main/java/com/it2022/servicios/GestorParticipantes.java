@@ -1,10 +1,12 @@
 package com.it2022.servicios;
 import com.it2022.modelo.Participante;
 import com.it2022.persistencia.PersistenciaParticipante;
+import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
+@Service
 
 @Named
 public class GestorParticipantes {
@@ -15,7 +17,7 @@ public class GestorParticipantes {
         return persPart.getListaParticipantes();
     }
 
-    public Participante getParticipantePerId(int id) {
+    public Participante getParticipantePerId(Long id) {
         if (id > 0) return persPart.cargarParticipante(id);
         else return null;
     }
@@ -26,7 +28,7 @@ public class GestorParticipantes {
             persPart.almacenParticipantes(newParticipante);}
     }
 
-    public Boolean removeParticipante(int id) {
+    public Boolean removeParticipante(Long id) {
         if (id > 0) {
             return persPart.deleteParticipante(id);
         }
@@ -34,7 +36,7 @@ public class GestorParticipantes {
 
     }
 
-    public Participante edicionParticipante(int id, Participante nuevosDatosParticipante) {
+    public Participante edicionParticipante(Long id, Participante nuevosDatosParticipante) {
         if (id > 0) {
             Participante participanteAModificar = getParticipantePerId(id);
             if (participanteAModificar != null) {

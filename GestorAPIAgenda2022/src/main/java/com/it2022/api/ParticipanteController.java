@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -23,16 +24,25 @@ public class ParticipanteController {
 
     //GET/api/participantes
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Participante> mostrarTodosParticipantes() {
-        return gtrPart.getAll();
+    @RequestMapping(value = "",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+
+    public ResponseEntity<List> mostrarTodosParticipantes() {
+        List<Participante>  lP = gtrPart.getAll();
+        System.out.println(lP);
+        return new ResponseEntity<>(lP, HttpStatus.OK);
     }
 
     //POST/api/participantes -d {newParticipante}
     @PostMapping(
+
             value = "",
             produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+
     public ResponseEntity<Message> postNuevoParticipante(@Valid @RequestBody Participante newParticipante) {
         System.out.println(newParticipante);
         gtrPart.addParticipante(newParticipante);
@@ -42,7 +52,7 @@ public class ParticipanteController {
 
     //DELETE/api/participantes({id}
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Message> participanteABorrar(@PathVariable int id) {
+    public ResponseEntity<Message> participanteABorrar(@PathVariable Long id) {
         System.out.println(id);
         Boolean isDeleted = gtrPart.removeParticipante(id);
         if (isDeleted) return new ResponseEntity(new Message("Participante Borrado"), HttpStatus.ACCEPTED);
@@ -51,7 +61,7 @@ public class ParticipanteController {
     }
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Message> edicionParticipante(@PathVariable int id, @RequestBody Participante nuevosDatosParticipante) {
+    public ResponseEntity<Message> edicionParticipante(@PathVariable Long id, @RequestBody Participante nuevosDatosParticipante) {
         System.out.println(id + "::" + nuevosDatosParticipante);
         Participante edicionParticipante = gtrPart.edicionParticipante(id, nuevosDatosParticipante);
         return new ResponseEntity<>(new Message("Edición de Participante realizada correctamente"), HttpStatus.ACCEPTED);
