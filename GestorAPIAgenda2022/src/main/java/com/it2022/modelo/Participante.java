@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-@PrimaryKeyJoinColumn(name = "AgendaID")
+@PrimaryKeyJoinColumn(name = "personaID")
 public class Participante extends Persona{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

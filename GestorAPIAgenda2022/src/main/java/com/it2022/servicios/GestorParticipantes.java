@@ -12,7 +12,7 @@ public class GestorParticipantes {
     PersistenciaParticipante persPart;
 
     public List<Participante> getAll() {
-        return persPart.getAll();
+        return persPart.getListaParticipantes();
     }
 
     public Participante getParticipantePerId(int id) {
