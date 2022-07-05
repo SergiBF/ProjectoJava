@@ -17,9 +17,9 @@ public interface PersistenciaTareaInf {
 
     public Tarea actualizarTarea(Tarea tarNuevosDatos);
 
-    public Tarea buscadorDeTareas(int idTarea);
+    public Tarea buscadorDeTareas(Long idTarea);
 
     public List<Tarea> getRepos();
 
-    public boolean deleteTarea(int id);
+    public boolean deleteTarea(Long id);
 }

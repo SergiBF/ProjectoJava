@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="724d9211-45ba-46e4-a587-94e9b2cd3fee" name="Changes" comment="Getter &amp; Setter Participante" />
+    <list default="true" id="724d9211-45ba-46e4-a587-94e9b2cd3fee" name="Changes" comment="Getter &amp; Setter Participante">
+      <change beforePath="$PROJECT_DIR$/GestorAPIAgenda2022/src/main/java/com/it2022/api/TareaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/GestorAPIAgenda2022/src/main/java/com/it2022/api/TareaController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

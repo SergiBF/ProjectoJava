@@ -2,8 +2,12 @@ package com.it2022.api;
 import com.it2022.modelo.Tarea;
 import com.it2022.servicios.GestorTareasInf;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 public class TareaController {
@@ -17,20 +21,25 @@ public class TareaController {
         @Autowired
         private GestorTareasInf gtiServ;
 
-        @GetMapping
-        public String Hello() {
 
-            return "Hey";
-        }
 
         @RequestMapping(value = "",
                 consumes = MediaType.APPLICATION_JSON_VALUE,
                 method = RequestMethod.GET
         )
-        public List<Tarea> getTareasAPI() {
-            return gtiServ.getRepo();
+        public ResponseEntity<List<Tarea>> getTareasAPI() {
+
+            List<Tarea> getAllTareas = gtiServ.getRepo();
+            return new ResponseEntity<>(getAllTareas, HttpStatus.OK);
         }
 
+        @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+        public ResponseEntity getTarea(@PathVariable Long id) {
+            Tarea tarea = gtiServ.obtenerTarea(id);
+            if (tarea != null) return new ResponseEntity(tarea, HttpStatus.OK);
+            else
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
 
         @RequestMapping(value = "",
                 consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -39,13 +48,13 @@ public class TareaController {
         )
 
         //Solo hago pruebas con el id, el detalle, la fecha y la hora.
-        public String postTareasAPI(@RequestBody Tarea newTarea) { // int id, String detalle, String fecha, String hora
+        public ResponseEntity postTareasAPI(@RequestBody Tarea newTarea) { // int id, String detalle, String fecha, String hora
             System.out.println(newTarea);
             if(newTarea.isValid() && newTarea!=null) {
                 gtiServ.addTarea(newTarea);
-                return "todo OK";
-            }
-            return "Tarea no valida";
+                return new ResponseEntity(newTarea, HttpStatus.CREATED);}
+
+            return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
         }
 
         @RequestMapping(
@@ -53,13 +62,13 @@ public class TareaController {
                 consumes = MediaType.APPLICATION_JSON_VALUE,
                 value = "/{id}"
         )
-        public String putTareasAPI(@PathVariable int id,
+        public ResponseEntity putTareasAPI(@PathVariable Long id,
                                    @RequestBody Tarea modTarea){
             System.out.println(id+"::"+modTarea);
             Tarea tareaActualizada = gtiServ.actualizarTarea(id, modTarea);
             if(tareaActualizada != null){
-                return "todo ok";
-            }else return "Error";
+                return new ResponseEntity(tareaActualizada, HttpStatus.OK);
+            }else return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
 
 
         }
@@ -70,20 +79,16 @@ public class TareaController {
                 method = RequestMethod.DELETE
         )
 
-        public String deleteTareasAPI(@PathVariable int id){
+        public ResponseEntity deleteTareasAPI(@PathVariable Long id){
             System.out.println("id:"+id);
 
             if(gtiServ.deleteTarea(id)){
-                System.out.println("hola desde tarea eliminada");
-                return "Tarea eliminada";
+
+                return new ResponseEntity(HttpStatus.OK);
             }
-            System.out.println("hola des de tarea no eliminada");
-            return "Error, no encontrado";
-        };
 
-
-
-
+            return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
+        }
 
     }
 }

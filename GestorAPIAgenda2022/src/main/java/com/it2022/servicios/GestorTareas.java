@@ -25,7 +25,7 @@ public class GestorTareas implements GestorTareasInf {
 
 
 
-    public Tarea obtenerTarea(int id){
+    public Tarea obtenerTarea(Long id){
 
         return repoTareas.buscadorDeTareas(id);
 
@@ -53,7 +53,7 @@ public class GestorTareas implements GestorTareasInf {
 
 
 
-    public Tarea actualizarTarea(int id, Tarea modTarea){
+    public Tarea actualizarTarea(Long id, Tarea modTarea){
         if (id>=0){
             Tarea tar = repoTareas.buscadorDeTareas(id);
             tar = modTarea;
@@ -71,7 +71,7 @@ public class GestorTareas implements GestorTareasInf {
         return null;
     }
 
-    public boolean deleteTarea(int id){
+    public boolean deleteTarea(Long id){
         if(id>=0){
             return repoTareas.deleteTarea(id);
         }

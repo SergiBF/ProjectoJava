@@ -50,7 +50,7 @@ public class TestController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             value = "/{id}"
     )
-    public String putTareasAPI(@PathVariable int id,
+    public String putTareasAPI(@PathVariable Long id,
                                @RequestBody Tarea modTarea){
         System.out.println(id+"::"+modTarea);
             Tarea tareaActualizada = gtiServ.actualizarTarea(id, modTarea);
@@ -67,7 +67,7 @@ public class TestController {
             method = RequestMethod.DELETE
     )
 
-    public String deleteTareasAPI(@PathVariable int id){
+    public String deleteTareasAPI(@PathVariable Long id){
         System.out.println("id:"+id);
 
         if(gtiServ.deleteTarea(id)){

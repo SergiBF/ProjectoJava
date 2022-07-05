@@ -14,12 +14,12 @@ public interface GestorTareasInf {
     public List<Tarea> buscaTareasPorUsuarioYFecha(String fecha, int idUsuario);
 
 
-    public Tarea obtenerTarea(int id);
+    public Tarea obtenerTarea(Long id);
 
-    public Tarea actualizarTarea(int id, Tarea tarNuevosDatos);
+    public Tarea actualizarTarea(Long id, Tarea tarNuevosDatos);
 
     public List<Tarea> getRepo();
 
 
-    public boolean deleteTarea(int id);
+    public boolean deleteTarea(Long id);
 }

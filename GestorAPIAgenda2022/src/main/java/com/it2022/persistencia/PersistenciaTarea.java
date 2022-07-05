@@ -1,17 +1,21 @@
 package com.it2022.persistencia;
 
 import com.it2022.modelo.*;
-import com.it2022.modelo.*;
 
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Named
 public class PersistenciaTarea implements PersistenciaTareaInf {
 
     //Patrón Singleton
     // private static PersistenciaTarea persi = new PersistenciaTarea();
+    @PersistenceContext
+    private EntityManager em;
 
     private ArrayList<Tarea> repoTarea = new ArrayList();
 
@@ -25,14 +29,15 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
         listaParticipantes.add(new Participante(0L, "Pedro", "Martinez", "participante@email.com"));
 
-        this.repoTarea.add(new Tarea(0, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
-        this.repoTarea.add(new Tarea(1, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));
+        /*this.repoTarea.add(new Tarea(0L, "Cita con el dentista", "20/06/2022", "17:30", agenda, usuario, listaParticipantes, "Cita dentista"));
+        this.repoTarea.add(new Tarea(1L, "Llevar el coche al taller", "16/06/2022", "18:00", agenda, usuario, listaParticipantes, "Reparacion coche"));*/
 
     }
 
     //Patrón Singleton
 
     public List<Tarea> getRepoTarea() {
+        List<Tarea> repoTarea = em.createQuery("FROM tarea").getResultList();
         return repoTarea;
     }
 
@@ -66,7 +71,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
      * @return devuelve un objeto tarea si la encuentra, si no devuelve un nulo
      */
 
-    public Tarea buscadorDeTareas(int idTarea) {
+    public Tarea buscadorDeTareas(Long idTarea) {
         for (Tarea t : repoTarea) {
             if (t.getId() == idTarea) {
                 System.out.println(t);
@@ -107,7 +112,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
     public void addTarea(Tarea tarea) {
         for (Tarea t : this.repoTarea) {
             if (t.getId() == tarea.getId()) {
-                tarea.setId(repoTarea.size() + 1);
+                tarea.setId((long) (repoTarea.size() + 1));
             }
         }
         this.repoTarea.add(tarea);
@@ -140,7 +145,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
 
     }
 
-    public boolean deleteTarea(int id) {
+    public boolean deleteTarea(Long id) {
         for (Tarea tr : repoTarea) {
             if (tr.getId() == id) {
                 repoTarea.remove(tr);

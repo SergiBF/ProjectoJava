@@ -9,7 +9,7 @@ import java.util.List;
 public class Tarea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column
     private String detalle;
     @Column
@@ -37,7 +37,7 @@ public class Tarea {
     )
     private List<Participante> listaParticipantes;
 
-    public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Usuario usuario, ArrayList<Participante> listaParticipantes, String titulo) {
+    public Tarea(Long id, String detalle, String fecha, String hora, Agenda agenda, Usuario usuario, ArrayList<Participante> listaParticipantes, String titulo) {
         this.id = id;
         this.detalle = detalle;
         this.fecha = fecha;
@@ -52,7 +52,7 @@ public class Tarea {
 
     }
 
-    public Tarea(int id, String detalle, String fecha, String hora) {
+    public Tarea(Long id, String detalle, String fecha, String hora) {
         this.id = id;
         this.detalle = detalle;
         this.fecha = fecha;
@@ -95,11 +95,11 @@ public class Tarea {
         return participante;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
