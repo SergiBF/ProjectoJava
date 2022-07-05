@@ -16,7 +16,7 @@ public class PersistenciaParticipante {
 
 
     public List<Participante> getListaParticipantes() {
-        List<Participante> listaParticipantes = em.createQuery("FROM Tarea").getResultList();
+        List<Participante> listaParticipantes = em.createQuery("SELECT P FROM Participante P").getResultList();
         return listaParticipantes;
     }
 
@@ -28,7 +28,7 @@ public class PersistenciaParticipante {
     }
 
     @Transactional
-    public Boolean deleteParticipante(int id) {
+    public Boolean deleteParticipante(Long id) {
         Participante participanteABorrar = cargarParticipante(id);
         em.remove(participanteABorrar);
         return true;
@@ -41,7 +41,7 @@ public class PersistenciaParticipante {
 
     }
 
-    public Participante cargarParticipante(int id) {
+    public Participante cargarParticipante(Long id) {
         return em.find(Participante.class, id);
 
     }

@@ -13,9 +13,18 @@ public class Persona {
 
 
     @Column
-    private String nombre, apellidos, email;
+    private String nombre;
+
+    @Column
+    private String apellidos;
+
+    @Column
+    private String email;
 
 
+
+    public Persona() {
+    }
 
     public Persona(String nombre, String apellidos, String email){
         this.nombre = nombre;
