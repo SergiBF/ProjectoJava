@@ -1,23 +1,32 @@
 package com.it2022.modelo;
 
-public class Usuario extends Persona{
+import javax.persistence.*;
+
+@Entity
+@Table
+public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int IDusuario;
 
+    @Column
+    private String nombre, apellidos, email;
 
-    public Usuario(String nombre, String apellidos, String email, int id ) {
-        super(nombre, apellidos, email);
-
-        this.IDusuario=id;
-
+    public Usuario() {
     }
 
+    public Usuario(int IDusuario, String nombre, String apellidos, String email) {
+        this.IDusuario = IDusuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+    }
 
-
-
-
-
-
-
+    public Usuario(String nombre, String apellidos, String email) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+    }
 
     // Getter y Setter
     public int getIDusuario() {

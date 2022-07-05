@@ -21,7 +21,7 @@ public class PersistenciaTarea implements PersistenciaTareaInf {
         ArrayList<Calendario> listaCalendario = new ArrayList();
         listaCalendario.add(ca);
         Agenda agenda = new Agenda("Personal", listaCalendario);
-        Usuario usuario = new Usuario("Juan", "Rodríguez", "email@email.com", 1);
+        Usuario usuario = new Usuario(1, "Juan", "Rodríguez", "email@email.com");
         ArrayList<Participante> listaParticipantes = new ArrayList<Participante>();
         listaParticipantes.add(new Participante(0, "Pedro", "Martinez", "participante@email.com"));
 
