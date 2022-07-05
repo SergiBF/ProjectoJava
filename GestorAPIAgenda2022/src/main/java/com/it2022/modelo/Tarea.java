@@ -1,19 +1,43 @@
 package com.it2022.modelo;
 
+import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+@Entity
+@Table
 public class Tarea {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
     private String detalle;
+    @Column
 
     private String titulo;
+    @Column
     private String fecha;
+    @Column
     private String hora;
+    @Column
     private String participante;
+
+    @ManyToOne
+    @JoinColumn(name = "agenda", nullable = false)
     private Agenda agenda;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario", nullable = false)
     private Usuario usuario;
-    private ArrayList<Participante> listaParticipantes;
+    @ManyToMany
+    @JoinTable(
+            name = "tarea_participantes",
+            joinColumns = @JoinColumn(name = "tarea", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "participante", nullable = false)
+    )
+    private List<Participante> listaParticipantes;
 
     public Tarea(int id, String detalle, String fecha, String hora, Agenda agenda, Usuario usuario, ArrayList<Participante> listaParticipantes, String titulo) {
         this.id = id;
@@ -26,10 +50,11 @@ public class Tarea {
         this.titulo = titulo;
     }
 
-    public Tarea(){
+    public Tarea() {
 
     }
-    public Tarea(int id, String detalle, String fecha, String hora){
+
+    public Tarea(int id, String detalle, String fecha, String hora) {
         this.id = id;
         this.detalle = detalle;
         this.fecha = fecha;
@@ -98,7 +123,7 @@ public class Tarea {
     }
 
 
-    public ArrayList<Participante> getListaParticipantes() {
+    public List<Participante> getListaParticipantes() {
         return listaParticipantes;
     }
 
@@ -113,25 +138,14 @@ public class Tarea {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
     @Override
     public String toString() {
-        return "Tarea{" +
-                "id=" + id +
-                ", detalle='" + detalle + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", fecha='" + fecha + '\'' +
-                ", hora='" + hora + '\'' +
-                ", participante='" + participante + '\'' +
-                ", agenda=" + agenda +
-                ", usuario=" + usuario +
-                ", listaParticipantes=" + listaParticipantes +
-                '}';
+        return "Tarea{" + "id=" + id + ", detalle='" + detalle + '\'' + ", titulo='" + titulo + '\'' + ", fecha='" + fecha + '\'' + ", hora='" + hora + '\'' + ", participante='" + participante + '\'' + ", agenda=" + agenda + ", usuario=" + usuario + ", listaParticipantes=" + listaParticipantes + '}';
     }
 
     public boolean isValid() {
-        if(this.detalle!=null && this.detalle.length()>3 && this.fecha!=null && this.fecha.length()>8
-                && this.usuario !=null && this.hora!=null && this.fecha.length()>2
-                && this.titulo!=null){
+        if (this.detalle != null && this.detalle.length() > 3 && this.fecha != null && this.fecha.length() > 8 && this.usuario != null && this.hora != null && this.fecha.length() > 2 && this.titulo != null) {
             return true;
         }
 

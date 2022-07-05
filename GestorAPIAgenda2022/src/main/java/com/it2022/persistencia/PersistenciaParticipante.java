@@ -15,9 +15,9 @@ public class PersistenciaParticipante {
     //Patrón Singleton creando el constructor de forma privada
     private PersistenciaParticipante() {
 
-        listaParticipantes.add(new Participante(0, "Pedro", "Martinez", "participante@email.com"));
-        listaParticipantes.add(new Participante(1, "María", "Gómez", "mariaGomez@terra.es"));
-        listaParticipantes.add(new Participante(2, "Héctor", "Olivares", "HOliv@yahoo.es"));
+        listaParticipantes.add(new Participante(0L, "Pedro", "Martinez", "participante@email.com"));
+        listaParticipantes.add(new Participante(1L, "María", "Gómez", "mariaGomez@terra.es"));
+        listaParticipantes.add(new Participante(2L, "Héctor", "Olivares", "HOliv@yahoo.es"));
 
     }
 
@@ -37,7 +37,7 @@ public class PersistenciaParticipante {
 
 
     public void almacenParticipantes(Participante newParticipante) {
-        int newId = listaParticipantes.size() + 1;
+        Long newId = (long)(listaParticipantes.size() + 1);
         newParticipante.setId(newId);
         listaParticipantes.add(newParticipante);
         System.out.println("Hola desde Persistencia");

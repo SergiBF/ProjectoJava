@@ -1,7 +1,13 @@
 package com.it2022.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 import java.util.ArrayList;
 
+@Entity
+@Table
+@PrimaryKeyJoinColumn(name = "AgendaID")
 public class Calendario extends Agenda {
 
     private String nombreCalendario;

@@ -1,8 +1,18 @@
 package com.it2022.modelo;
 
+import javax.persistence.*;
+
+@Entity
+@Table
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Persona {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+
+    @Column
     private String nombre, apellidos, email;
 
 
@@ -29,6 +39,13 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;

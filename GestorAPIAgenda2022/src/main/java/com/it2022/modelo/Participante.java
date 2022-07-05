@@ -1,26 +1,33 @@
 package com.it2022.modelo;
 
+import javax.persistence.*;
+
+@Entity
+@Table
+@PrimaryKeyJoinColumn(name = "AgendaID")
 public class Participante extends Persona{
-
-    private int id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String nombre;
+    @Column
     private String apellidos;
-
+    @Column
     private String email;
 
 
-    public Participante(int id, String nombre, String apellidos, String email) {
+    public Participante(Long id, String nombre, String apellidos, String email) {
         super(nombre, apellidos, email);
         this.id=id;
     }
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
